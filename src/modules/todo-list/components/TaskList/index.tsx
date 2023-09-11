@@ -5,14 +5,25 @@ import { Task } from '../../models';
 import styles from './styles.module.css';
 
 export const TaskList = () => {
-  const { tasks, query } = useTaskStore((state) => ({
+  const { tasks, query, filterQuery } = useTaskStore((state) => ({
     tasks: state.tasks,
     query: state.query,
+    filterQuery: state.filterQuery,
   }));
   const completedTasks = tasks.filter((task) => task.status === 'completed');
 
   const search = (arr: Task[]) => {
     return arr.filter((item: Task) => item.title.toLowerCase().includes(query.toLowerCase()));
+  };
+
+  const filter = (arr: Task[]) => {
+    return arr.filter((item: Task) => {
+      if (filterQuery === 'all') {
+        return item;
+      } else {
+        return item.priority === filterQuery;
+      }
+    });
   };
 
   const placeholder = (
@@ -31,7 +42,7 @@ export const TaskList = () => {
       </div>
       {!tasks.length
         ? placeholder
-        : search(tasks).map((task) => <TaskItem key={task.id} {...task} />)}
+        : filter(search(tasks)).map((task) => <TaskItem key={task.id} {...task} />)}
     </div>
   );
 };
