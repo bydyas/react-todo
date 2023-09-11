@@ -2,7 +2,8 @@
 
 ## Description
 
-![зображення](https://github.com/bydyas/react-todo/assets/74198494/f4accde9-3925-467a-83a0-88da2425fd9b)
+![зображення](https://github.com/bydyas/react-todo/assets/74198494/f7bbebc1-385c-4b35-889d-57a6f1301b8f)
+
 
 Here are: 
 1. the form adding new task.
