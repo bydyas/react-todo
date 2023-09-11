@@ -3,13 +3,13 @@ import { TaskItem } from '../TaskItem';
 import styles from './styles.module.css';
 
 export const TaskList = () => {
-  const tasks = useTaskStore((state) => state.tasks);
+  const searchedTasks = useTaskStore((state) => state.searchedTasks);
 
   return (
     <div className={styles.list}>
-      {!tasks.length
+      {!searchedTasks.length
         ? 'No planned tasks'
-        : tasks.map((task) => <TaskItem key={task.id} {...task} />)}
+        : searchedTasks.map((task) => <TaskItem key={task.id} {...task} />)}
     </div>
   );
 };
