@@ -12,13 +12,14 @@ export const TaskItem: React.FC<Task> = ({ id, title, description, status, prior
     <li className={styles.task}>
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.container}>
-        <button type="button">{}</button>
         <p className={styles.description}>{description}</p>
-        <p className={[styles.status, statusColor].join(' ')}>{status}</p>
-        <p className={styles.priority}>{priority}</p>
-        <button onClick={() => removeTaskById(id)} type="button">
-          <FaTrashCan />
-        </button>
+        <div className={styles.details}>
+          <p className={[styles.status, statusColor].join(' ')}>{status}</p>
+          <p className={styles.priority}>{priority}</p>
+          <button onClick={() => removeTaskById(id)} type="button" className={styles.btn}>
+            <FaTrashCan />
+          </button>
+        </div>
       </div>
     </li>
   );

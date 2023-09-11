@@ -24,10 +24,26 @@
     margin-bottom: 10px;
 }
 
+.details {
+    display: flex;
+    gap: 10px;
+}
+
 .uncompleted {
     color: lightcoral;
 }
 
 .completed {
     color: lightgreen;
+}
+
+.btn {
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    color: var(--blue-dark)
+}
+
+.btn:hover {
+    color: lightcoral;
 }
