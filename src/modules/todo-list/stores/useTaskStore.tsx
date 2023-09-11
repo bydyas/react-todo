@@ -5,6 +5,7 @@ import { Task } from '../models';
 interface TaskState {
   tasks: Task[];
   addNewTask: (newTask: Task) => void;
+  removeTaskById: (id: string) => void;
 }
 
 export const useTaskStore = create<TaskState>()(
@@ -13,6 +14,8 @@ export const useTaskStore = create<TaskState>()(
       (set) => ({
         tasks: [],
         addNewTask: (newTask: Task) => set((state) => ({ tasks: [...state.tasks, newTask] })),
+        removeTaskById: (id: string) =>
+          set((state) => ({ tasks: state.tasks.filter((task) => task.id === id) })),
       }),
       { name: 'taskStore' },
     ),

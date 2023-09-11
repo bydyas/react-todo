@@ -1,9 +1,11 @@
 import React from 'react';
 import { Task } from '../../models';
 import { FaTrashCan } from 'react-icons/fa6';
+import { useTaskStore } from '../../stores/useTaskStore';
 import styles from './styles.module.css';
 
-export const TaskItem: React.FC<Task> = ({ title, description, status, priority }) => {
+export const TaskItem: React.FC<Task> = ({ id, title, description, status, priority }) => {
+  const removeTaskById = useTaskStore((state) => state.removeTaskById);
   const statusColor = status === 'completed' ? styles.completed : styles.uncompleted;
 
   return (
@@ -14,7 +16,7 @@ export const TaskItem: React.FC<Task> = ({ title, description, status, priority 
         <p className={styles.description}>{description}</p>
         <p className={[styles.status, statusColor].join(' ')}>{status}</p>
         <p className={styles.priority}>{priority}</p>
-        <button type="button">
+        <button onClick={() => removeTaskById(id)} type="button">
           <FaTrashCan />
         </button>
       </div>
