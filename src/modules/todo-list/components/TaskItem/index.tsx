@@ -1,5 +1,5 @@
 import React from 'react';
-import { Task } from '../models';
+import { Task } from '../../models';
 import { FaTrashCan } from 'react-icons/fa6';
 import styles from './styles.module.css';
 
@@ -7,7 +7,7 @@ export const TaskItem: React.FC<Task> = ({ title, description, status, priority 
   const statusColor = status === 'completed' ? styles.completed : styles.uncompleted;
 
   return (
-    <div className={styles.task}>
+    <li className={styles.task}>
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.container}>
         <button type="button">{}</button>
@@ -18,6 +18,6 @@ export const TaskItem: React.FC<Task> = ({ title, description, status, priority 
           <FaTrashCan />
         </button>
       </div>
-    </div>
+    </li>
   );
 };

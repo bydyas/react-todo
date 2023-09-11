@@ -1,11 +1,7 @@
-import { TaskItem } from './modules/todo-list/components/TaskItem';
+import { TaskList } from './modules/todo-list/components/TaskList';
 
 function App() {
-  return (
-    <div className="container">
-      <TaskItem title="Shopping" description="Buy new shoes" priority="high" status="uncompleted" />
-    </div>
-  );
+  return <TaskList />;
 }
 
 export default App;
