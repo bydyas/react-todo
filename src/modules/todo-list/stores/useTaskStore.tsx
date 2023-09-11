@@ -1,11 +1,10 @@
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
-import { FIlterQuery, FilterName, Task } from '../models';
+import { FIlterQuery, Task } from '../models';
 
 interface TaskState {
   tasks: Task[];
   query: string;
-  filterName: FilterName;
   filterQuery: FIlterQuery;
   addNewTask: (newTask: Task) => void;
   removeTaskById: (id: string) => void;
@@ -21,7 +20,6 @@ export const useTaskStore = create<TaskState>()(
       (set, get) => ({
         tasks: [],
         query: '',
-        filterName: 'all',
         filterQuery: 'all',
         addNewTask: (newTask: Task) => set((state) => ({ tasks: [...state.tasks, newTask] })),
         removeTaskById: (id: string) =>

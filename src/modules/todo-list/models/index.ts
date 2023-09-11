@@ -10,6 +10,4 @@ export type Task = {
   status: TaskStatus;
 };
 
-export type FilterName = 'status' | 'priority' | 'all';
-
 export type FIlterQuery = (TaskPriority & TaskStatus) | 'all';
