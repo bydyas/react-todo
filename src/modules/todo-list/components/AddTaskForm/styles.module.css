@@ -1,0 +1,32 @@
+.form {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.input {
+    outline: 0;
+    border: 2px solid var(--blue-dark);
+    border-radius: 8px;
+    flex: 25% 1 1;
+    height: 42px;
+    padding: 5px 10px;
+    color: var(--gray-300);
+    background-color: var(--gray-500);
+}
+
+.input::placeholder, .input[name="priority"] {
+    color: var(--gray-300);
+}
+
+.btn {
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    width: 90px;
+    height: 42px;
+    color: var(--gray-100);
+    border: 0;
+    border-radius: 8px;
+    background-color: var(--blue-dark);
+}

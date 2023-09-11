@@ -5,6 +5,7 @@
     height: 72px;
     border-radius: 8px;
     background-color: #262626;
+    color: var(--gray-100);
 }
 
 .container {

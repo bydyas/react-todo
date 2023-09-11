@@ -1,6 +1,15 @@
 @import url("./reset.css");
 @import url("./vars.css");
 
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--gray-700);
+}
+
+.app {
+  margin: 0 auto;
+  max-width: 700px;
 }
