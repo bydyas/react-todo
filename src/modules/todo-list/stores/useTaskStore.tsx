@@ -4,12 +4,12 @@ import { Task } from '../models';
 
 interface TaskState {
   tasks: Task[];
-  searchedTasks: Task[];
+  query: string;
   addNewTask: (newTask: Task) => void;
   removeTaskById: (id: string) => void;
-  searchTaskByTitle: (title: string) => void;
   editTask: (editedTask: Task) => void;
   completeTaskById: (id: string) => void;
+  setQuery: (q: string) => void;
 }
 
 export const useTaskStore = create<TaskState>()(
@@ -17,29 +17,10 @@ export const useTaskStore = create<TaskState>()(
     persist(
       (set, get) => ({
         tasks: [],
-        searchedTasks: [],
-        addNewTask: (newTask: Task) =>
-          set((state) => ({
-            tasks: [...state.tasks, newTask],
-            searchedTasks: [...state.tasks, newTask],
-          })),
+        query: '',
+        addNewTask: (newTask: Task) => set((state) => ({ tasks: [...state.tasks, newTask] })),
         removeTaskById: (id: string) =>
-          set((state) => ({
-            tasks: state.tasks.filter((task) => task.id !== id),
-            searchedTasks: state.tasks.filter((task) => task.id !== id),
-          })),
-        searchTaskByTitle: (title: string) =>
-          set((state) => {
-            if (!title) {
-              return { searchedTasks: state.tasks };
-            } else {
-              return {
-                searchedTasks: state.tasks.filter((task) =>
-                  task.title.toLowerCase().includes(title.toLowerCase()),
-                ),
-              };
-            }
-          }),
+          set((state) => ({ tasks: state.tasks.filter((task) => task.id !== id) })),
         editTask: (editedTask) => {
           useTaskStore.getState().removeTaskById(editedTask.id);
           useTaskStore.getState().addNewTask(editedTask);
@@ -53,6 +34,7 @@ export const useTaskStore = create<TaskState>()(
           useTaskStore.getState().removeTaskById(task.id);
           useTaskStore.getState().addNewTask(editedTask);
         },
+        setQuery: (q: string) => set({ query: q }),
       }),
       { name: 'taskStore' },
     ),

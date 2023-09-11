@@ -1,11 +1,19 @@
 import { useTaskStore } from '../../stores/useTaskStore';
 import { TaskItem } from '../TaskItem';
 import { FaRegPenToSquare } from 'react-icons/fa6';
+import { Task } from '../../models';
 import styles from './styles.module.css';
 
 export const TaskList = () => {
-  const searchedTasks = useTaskStore((state) => state.searchedTasks);
-  const completedTasks = searchedTasks.filter((task) => task.status === 'completed');
+  const { tasks, query } = useTaskStore((state) => ({
+    tasks: state.tasks,
+    query: state.query,
+  }));
+  const completedTasks = tasks.filter((task) => task.status === 'completed');
+
+  const search = (arr: Task[]) => {
+    return arr.filter((item: Task) => item.title.toLowerCase().includes(query.toLowerCase()));
+  };
 
   const placeholder = (
     <div className={styles.placeholder}>
@@ -18,12 +26,12 @@ export const TaskList = () => {
   return (
     <div className={styles.list}>
       <div className={styles.details}>
-        <p>All: {searchedTasks.length}</p>
+        <p>All: {tasks.length}</p>
         <p>Completed: {completedTasks.length}</p>
       </div>
-      {!searchedTasks.length
+      {!tasks.length
         ? placeholder
-        : searchedTasks.map((task) => <TaskItem key={task.id} {...task} />)}
+        : search(tasks).map((task) => <TaskItem key={task.id} {...task} />)}
     </div>
   );
 };

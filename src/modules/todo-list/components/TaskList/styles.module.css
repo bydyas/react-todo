@@ -15,9 +15,23 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: 2px solid var(--gray-100);
+    animation: infinite pulse 3s ease-in-out;
 }
 
+@keyframes pulse {
+    0% {
+        border-color: var(--gray-100);;
+    }
+    50% {
+        border-color: var(--blue-dark);;
+    }
+    100% {
+        border-color: var(--gray-100);;
+    }
+  }
+
 .placeholder {
+    margin: 15px 0;
     text-align: center;
     font-size: 1.75em;
     color: var(--gray-100);

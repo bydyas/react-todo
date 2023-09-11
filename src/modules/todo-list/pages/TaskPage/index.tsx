@@ -8,12 +8,11 @@ import styles from './styles.module.css';
 export const TaskPage: React.FC = () => {
   const { taskId } = useParams();
   const navigate = useNavigate();
-  const { searchedTasks, editTask } = useTaskStore((state) => ({
-    searchedTasks: state.searchedTasks,
+  const { tasks, editTask } = useTaskStore((state) => ({
+    tasks: state.tasks,
     editTask: state.editTask,
   }));
-  const task = searchedTasks.filter((task) => task.id === taskId)[0];
-  console.log(taskId);
+  const task = tasks.filter((task) => task.id === taskId)[0];
   const statusColor = task.status === 'uncompleted' ? styles.unc : styles.c;
   const [updatedTask, setupdatedTask] = React.useState<Task>(task);
 
