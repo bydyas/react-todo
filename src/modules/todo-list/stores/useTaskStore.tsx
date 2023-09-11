@@ -8,6 +8,7 @@ interface TaskState {
   addNewTask: (newTask: Task) => void;
   removeTaskById: (id: string) => void;
   searchTaskByTitle: (title: string) => void;
+  editTask: (editedTask: Task) => void;
 }
 
 export const useTaskStore = create<TaskState>()(
@@ -38,6 +39,10 @@ export const useTaskStore = create<TaskState>()(
               };
             }
           }),
+        editTask: (editedTask) => {
+          useTaskStore.getState().removeTaskById(editedTask.id);
+          useTaskStore.getState().addNewTask(editedTask);
+        },
       }),
       { name: 'taskStore' },
     ),

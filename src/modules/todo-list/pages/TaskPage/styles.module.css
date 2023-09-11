@@ -1,0 +1,56 @@
+.root {
+    color: var(--gray-100);
+}
+
+.goHome {
+    margin: 10px 0 20px 0;
+    font-size: 2em;
+}
+
+.heading {
+    font-size: 1.25em;
+    font-weight: 500;
+}
+
+.form {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lbl {
+    margin-bottom: 5px;
+}
+
+.input {
+    width: 100%;
+    outline: 0;
+    border: 2px solid var(--blue-dark);
+    border-radius: 8px;
+    flex: 25% 1 1;
+    height: 42px;
+    padding: 5px 10px;
+    color: var(--gray-300);
+    background-color: var(--gray-500);
+}
+
+.unc {
+    color: lightcoral;
+}
+
+.c {
+    color: lightgreen;
+}
+
+.btn {
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    width: 100%;
+    height: 42px;
+    color: var(--gray-100);
+    border: 0;
+    border-radius: 8px;
+    background-color: var(--blue-dark);
+}
