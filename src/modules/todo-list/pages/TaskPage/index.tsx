@@ -39,7 +39,7 @@ export const TaskPage: React.FC = () => {
         <FaArrowLeft />
       </Link>
       <h2 className={styles.heading}>
-        Task #{task.id}: <span className={statusColor}>{status}</span>
+        Task #{task.id}: <span className={statusColor}>{task.status}</span>
       </h2>
       <form className={styles.form} onSubmit={submitForm}>
         <label className={styles.lbl}>

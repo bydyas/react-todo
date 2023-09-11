@@ -9,12 +9,13 @@ interface TaskState {
   removeTaskById: (id: string) => void;
   searchTaskByTitle: (title: string) => void;
   editTask: (editedTask: Task) => void;
+  completeTaskById: (id: string) => void;
 }
 
 export const useTaskStore = create<TaskState>()(
   devtools(
     persist(
-      (set) => ({
+      (set, get) => ({
         tasks: [],
         searchedTasks: [],
         addNewTask: (newTask: Task) =>
@@ -41,6 +42,15 @@ export const useTaskStore = create<TaskState>()(
           }),
         editTask: (editedTask) => {
           useTaskStore.getState().removeTaskById(editedTask.id);
+          useTaskStore.getState().addNewTask(editedTask);
+        },
+        completeTaskById: (id: string) => {
+          const task = get().tasks.filter((task) => task.id === id)[0];
+          const editedTask = {
+            ...task,
+            status: 'completed',
+          } as Task;
+          useTaskStore.getState().removeTaskById(task.id);
           useTaskStore.getState().addNewTask(editedTask);
         },
       }),
