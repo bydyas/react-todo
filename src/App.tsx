@@ -6,6 +6,7 @@ import { useTWAEvent } from '@tonsolutions/telemetree-react';
 function App() {
   const eventBuilder = useTWAEvent();
   const params = new URLSearchParams(window.location.search);
+  console.log('params: ', params);
 
   const utmData = {
     utm_source: params.get("utm_source"),
@@ -14,6 +15,8 @@ function App() {
     utm_term: params.get("utm_term"),
     utm_content: params.get("utm_content"),
   };
+
+  console.log('utmData: ', utmData);
 
   eventBuilder.track("Same Link Opened", {
     ...utmData,
