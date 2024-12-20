@@ -14,7 +14,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         apiKey={import.meta.env.VITE_TWA_API_KEY}
         appName={import.meta.env.VITE_TWA_APP_NAME}
       >
-        <App />
+        {/* <App /> */}
+        <h1>Test</h1>
       </TwaAnalyticsProvider>
     </HashRouter>
   </React.StrictMode>,
